@@ -49,14 +49,14 @@ void doSecondMod(){
     HIGH, HIGH);
 }
 
-void doCycle(float hz, int cycles, float duty_cycle_coefficient, int initState, int initState2){
+void doCycle(float hz, int cycles, float duty_cycle_coefficient, int initial_state_led_1, int initial_state_led_2){
   int on_duration = (int)calculateLedOnDuration(hz, duty_cycle_coefficient); 
   int off_duration = (int)calculateLedOffDuration(hz, duty_cycle_coefficient); 
   for(int i = 0; i < cycles; i++ ){
 
-    blink(initState1,initState2);
+    blink(initial_state_led_1,initial_state_led_2);
     delay(on_duration);
-    blink(invertValue(initState1),invertValue(initState2));
+    blink(invertValue(initial_state_led_1),invertValue(initial_state_led_2));
     delay(off_duration);
   }
   offBlink();
